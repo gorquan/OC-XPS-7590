@@ -3,68 +3,56 @@
 <plist version="1.0">
 <dict>
 	<key>files</key>
-	<dict>
-		<key>Resources/VoodooInputMultitouch/MultitouchHelpers.h</key>
-		<data>
-		2Dn/wSPXmisHoAia4HckRfPF9VY=
-		</data>
-		<key>Resources/VoodooInputMultitouch/VoodooInputEvent.h</key>
-		<data>
-		4GTEuNGgjRofbAtGSyWz6Nbsnos=
-		</data>
-		<key>Resources/VoodooInputMultitouch/VoodooInputMessages.h</key>
-		<data>
-		ITveLScF2AAkztNSTyiWkOCYc8U=
-		</data>
-		<key>Resources/VoodooInputMultitouch/VoodooInputTransducer.h</key>
-		<data>
-		tKf2y+abfZojxi5j6ykUe/xPcsw=
-		</data>
-	</dict>
+	<dict/>
 	<key>files2</key>
 	<dict>
-		<key>Resources/VoodooInputMultitouch/MultitouchHelpers.h</key>
+		<key>PlugIns/VoodooGPIO.kext</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			eN0552k1oyGeLpJedMO8LEQK0Oc=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"a91092fb24f94fb2b04223e4942f5b1bce8b786b" or cdhash H"78dd39e76935a3219e2e925e74c3bc2c440ad0e7"</string>
+		</dict>
+		<key>PlugIns/VoodooI2CServices.kext</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			T8X1Tjf2yNLq5CaZWdyhb5a3UN0=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"8647e6d17b1aec210a34b23db88e93439e67a9ef" or cdhash H"4fc5f54e37f6c8d2eae4269959dca16f96b750dd"</string>
+		</dict>
+		<key>PlugIns/VoodooInput.kext</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			gwI0ldX0Z1pg+uOf7DonLP4u2go=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"c349baba8e941477ac7317d7d218d27b0825a18b" or cdhash H"83023495d5f4675a60fae39fec3a272cfe2eda0a"</string>
+		</dict>
+		<key>PlugIns/VoodooInput.kext.dSYM/Contents/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			2Dn/wSPXmisHoAia4HckRfPF9VY=
+			U6Ata5yowTIjiYmbe/f/QUpCqAI=
 			</data>
 			<key>hash2</key>
 			<data>
-			Sfb8D4oD0U3eU/uN3tJWzilbqnn/x967cYacLl0mbZc=
+			Ds9m0n5XhZtOAn2mmVMnifyFRnFEQbFobq8BO/weSzg=
 			</data>
 		</dict>
-		<key>Resources/VoodooInputMultitouch/VoodooInputEvent.h</key>
+		<key>PlugIns/VoodooInput.kext.dSYM/Contents/Resources/DWARF/VoodooInput</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			4GTEuNGgjRofbAtGSyWz6Nbsnos=
+			q9hRUyRVZKXJWvYOk3oHFQfjmQk=
 			</data>
 			<key>hash2</key>
 			<data>
-			pU3r7vNH4yll7M033lo4m86PdykPsGcQ05X2FBUJqxA=
-			</data>
-		</dict>
-		<key>Resources/VoodooInputMultitouch/VoodooInputMessages.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			ITveLScF2AAkztNSTyiWkOCYc8U=
-			</data>
-			<key>hash2</key>
-			<data>
-			6cZnFcLcCIBCR9exzPhAM5inJryl67pW37DSZJP2nI8=
-			</data>
-		</dict>
-		<key>Resources/VoodooInputMultitouch/VoodooInputTransducer.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			tKf2y+abfZojxi5j6ykUe/xPcsw=
-			</data>
-			<key>hash2</key>
-			<data>
-			IvkIsPz4A0X9BU4ot3+PyGGBxdoOe16xvFDZY6rIctA=
+			sgQlr9TXJDRUg0rQGtO5KFrsT5CnDyFKyzjaZo15R5w=
 			</data>
 		</dict>
 	</dict>

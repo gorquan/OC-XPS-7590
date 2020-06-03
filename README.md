@@ -23,9 +23,11 @@ Wireless | BCM94352Zz
 - **请先参考该文章：[XPS 7590 1.6.0 UEFI: unlock undervolting and remove CFG lock](https://www.reddit.com/r/Dell/comments/fzv599/xps_7590_160_uefi_unlock_undervolting_and_remove/)，对CFG Lock进行解锁再使用该OpenCore！**
 
 ##### 工作情况
-0.5.8 和 0.5.9的工作情况不一致，请根据自己的需求进行选择，详细工作情况请看对应文件夹下的README
+~~0.5.8 和 0.5.9的工作情况不一致，请根据自己的需求进行选择，详细工作情况请看对应文件夹下的README~~ 已解决触模板问题，建议使用0.5.9
 
 ##### 日志
+- 2019.6.3
+  - 解决OpenCore 0.5.9下触摸板无法使用问题，感谢[@Dracay](https://github.com/Dracay)提出的Issue和[@tiger511](https://github.com/VoodooI2C/VoodooI2C/issues/313#issuecomment-628906706)提出的解决方案
 - 2019.6.2
   - 更新到OpenCore 0.5.9
   - 更新Kexts
@@ -38,9 +40,11 @@ Wireless | BCM94352Zz
 
 ##### 感谢
 - Apple
-- [Acidanthera](https://github.com/acidanthera)
-- [daliansky](https://github.com/daliansky)
-- [geek5nan](https://github.com/geek5nan/Hackintosh-XPS7590)
+- [@Acidanthera](https://github.com/acidanthera)
+- [@daliansky](https://github.com/daliansky)
+- [@geek5nan](https://github.com/geek5nan/Hackintosh-XPS7590)
+- [@Dracay](https://github.com/Dracay)
+- [@tiger511](https://github.com/tiger511)
 
 ##### Issue和Pull Requests
 - 本EFI仅针对XPS 7590 i7 9750 1080p版本修改，其他版本请勿直接使用
