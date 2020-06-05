@@ -111,7 +111,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Rename _PTS to ZPTS(1,N) with SSDT-PTSWAK.aml</string>
+				<string>_PTS to ZPTS(1,N)</string>
 				<key>Count</key>
 				<integer>0</integer>
 				<key>Enabled</key>
@@ -137,7 +137,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Rename _WAK to ZWAK(1,N) with SSDT-PTSWAK.aml</string>
+				<string>_WAK to ZWAK(1,N)</string>
 				<key>Count</key>
 				<integer>0</integer>
 				<key>Enabled</key>
