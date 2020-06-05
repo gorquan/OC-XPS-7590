@@ -48,7 +48,15 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Fix Power consumption</string>
+				<string>Touchpad GPI0 mode</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-TPDX.aml</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>PTSWAK Framework</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
@@ -56,11 +64,19 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Touchpad GPI0 mode</string>
+				<string>Disable GPU</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
-				<string>SSDT-TPDX.aml</string>
+				<string>SSDT-NDGP_OFF.aml</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>WakeScreen</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-EXT4-WakeScreen.aml</string>
 			</dict>
 		</array>
 		<key>Delete</key>
@@ -69,7 +85,7 @@
 		<array>
 			<dict>
 				<key>Comment</key>
-				<string>Rename BRT6 to BRTX( Pair with SSDT-PNLF_BRT6.aml)</string>
+				<string>Rename BRT6 to BRTX(Pair with SSDT-PNLF_BRT6.aml)</string>
 				<key>Count</key>
 				<integer>0</integer>
 				<key>Enabled</key>
@@ -95,33 +111,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>_WAK to ZWAK (SSDT-PTSWAK)</string>
-				<key>Count</key>
-				<integer>0</integer>
-				<key>Enabled</key>
-				<true/>
-				<key>Find</key>
-				<data>X1dBSwE=</data>
-				<key>Limit</key>
-				<integer>0</integer>
-				<key>Mask</key>
-				<data></data>
-				<key>OemTableId</key>
-				<data></data>
-				<key>Replace</key>
-				<data>WldBSwE=</data>
-				<key>ReplaceMask</key>
-				<data></data>
-				<key>Skip</key>
-				<integer>0</integer>
-				<key>TableLength</key>
-				<integer>0</integer>
-				<key>TableSignature</key>
-				<data></data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>_PTS to ZPTS (SSDT-PTSWAK)</string>
+				<string>Rename _PTS to ZPTS(1,N) with SSDT-PTSWAK.aml</string>
 				<key>Count</key>
 				<integer>0</integer>
 				<key>Enabled</key>
@@ -136,6 +126,32 @@
 				<data></data>
 				<key>Replace</key>
 				<data>WlBUUwE=</data>
+				<key>ReplaceMask</key>
+				<data></data>
+				<key>Skip</key>
+				<integer>0</integer>
+				<key>TableLength</key>
+				<integer>0</integer>
+				<key>TableSignature</key>
+				<data></data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Rename _WAK to ZWAK(1,N) with SSDT-PTSWAK.aml</string>
+				<key>Count</key>
+				<integer>0</integer>
+				<key>Enabled</key>
+				<true/>
+				<key>Find</key>
+				<data>X1dBSwE=</data>
+				<key>Limit</key>
+				<integer>0</integer>
+				<key>Mask</key>
+				<data></data>
+				<key>OemTableId</key>
+				<data></data>
+				<key>Replace</key>
+				<data>WldBSwE=</data>
 				<key>ReplaceMask</key>
 				<data></data>
 				<key>Skip</key>
@@ -638,7 +654,7 @@
 				<string>Contents/Info.plist</string>
 			</dict>
 		</array>
-		<key>Block</key>
+		<key>Delete</key>
 		<array/>
 		<key>Emulate</key>
 		<dict>
@@ -866,7 +882,7 @@
 			<key>7C436110-AB2A-4BBB-A880-FE41995C9F82</key>
 			<dict>
 				<key>boot-args</key>
-				<string>brcmfx-country=#a agdpmod=vit9696 -wegnoegpu</string>
+				<string>brcmfx-country=#a agdpmod=vit9696</string>
 				<key>csr-active-config</key>
 				<data>5wMAAA==</data>
 				<key>prev-lang:kbd</key>
@@ -1051,8 +1067,6 @@
 			<false/>
 			<key>ReleaseUsbOwnership</key>
 			<false/>
-			<key>RequestBootVarFallback</key>
-			<true/>
 			<key>RequestBootVarRouting</key>
 			<true/>
 			<key>TscSyncTimeout</key>
