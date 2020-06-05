@@ -84,7 +84,7 @@
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
-				<string>SSDT-EXT4-WakeScreen.aml</string>
+				<string>SSDT-EXT4_WakeScreen.aml</string>
 			</dict>
 		</array>
 		<key>Block</key>
