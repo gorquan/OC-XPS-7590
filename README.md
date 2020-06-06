@@ -26,19 +26,26 @@ Wireless | BCM94352Zz
 ~~0.5.8 和 0.5.9的工作情况不一致，请根据自己的需求进行选择，详细工作情况请看对应文件夹下的README~~ 已解决触模板问题，建议使用0.5.9
 
 ##### 日志
-- 2019.6.5
+- 2020.6.6
+  - 修正了PNP0C0E睡眠，即Fn+Insert，将 PNP0C0E 睡眠转换为 PNP0C0D 睡眠。
+  - 去除boot-arg中的-wegnoegpu参数，采用SSDT屏蔽DGPU，待机时间可以持续到5小时以上。
+  - 修复了睡眠状态唤醒后需要按任意键点亮屏幕问题
+- 2020.6.5
   - 修复了睡眠唤醒电量消耗过快问题，见[文章](https://www.reddit.com/r/hackintosh/comments/gf6j7q/increased_battery_drain_after_wake_from_sleep_xps/)
-- 2019.6.3
+- 2020.6.3
   - 解决OpenCore 0.5.9下触摸板无法使用问题，感谢[@Dracay](https://github.com/Dracay)提出的Issue和[@tiger511](https://github.com/VoodooI2C/VoodooI2C/issues/313#issuecomment-628906706)提出的解决方案
-- 2019.6.2
+- 2020.6.2
   - 更新到OpenCore 0.5.9
   - 更新Kexts
-- 2019.5.20
+- 2020.5.20
   - 更新到OpenCore 0.5.8
   - 添加CPUFriend 能够降频到800Mhz
   - 修复HDMI睡眠唤醒黑屏问题
-- 2019.5.19
+- 2020.5.19
   - 参考geek5nan大佬的OpenCore 0.5.6进行改造
+
+##### 尚未测试
+- 连接HDMI时进行睡眠
 
 ##### 感谢
 - Apple

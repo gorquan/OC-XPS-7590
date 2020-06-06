@@ -19,6 +19,9 @@ DefinitionBlock("", "SSDT", 2, "OCLT", "PTSWAK", 0)
 {
     External(ZPTS, MethodObj)
     External(ZWAK, MethodObj)
+    External(EXT1, MethodObj)
+    External(EXT2, MethodObj)
+    External(EXT3, MethodObj)
     External(EXT4, MethodObj)
     External(DGPU._ON, MethodObj)
     External(DGPU._OFF, MethodObj)
@@ -61,6 +64,14 @@ DefinitionBlock("", "SSDT", 2, "OCLT", "PTSWAK", 0)
             {
                 \DGPU._ON ()
             }
+            If (CondRefOf(EXT1))
+            {
+                EXT1(Arg0)
+            }
+            If (CondRefOf(EXT2))
+            {
+                EXT2(Arg0)
+            }
             
         }
 
@@ -83,7 +94,12 @@ DefinitionBlock("", "SSDT", 2, "OCLT", "PTSWAK", 0)
             {
                 \DGPU._OFF ()
             }
-
+            
+            If (CondRefOf(EXT3))
+            {
+                EXT3(Arg0)
+            }
+            
             If (CondRefOf(EXT4))
             {
                 EXT4(Arg0)
