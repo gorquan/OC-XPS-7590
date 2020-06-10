@@ -25,7 +25,28 @@ Wireless | BCM94352Zz
 ##### 工作情况
 - ~~0.5.8 和 0.5.9的工作情况不一致，请根据自己的需求进行选择，详细工作情况请看对应文件夹下的README~~ 已解决触模板问题，建议使用0.5.9
 
+
+##### 睡眠处理
+1. 检查hibernatemode是否为0或3
+
+``` shell
+pmset -g | grep hibernatemode
+```
+
+2. 在终端执行以下命令
+
+``` shell
+sudo pmset -a standby 0
+sudo pmset -a proximitywake 0
+sudo pmset -a hibernatemode 3 # 如果hibernatemode 不为3或0 执行此条命令
+```
+
+3. 除了“当显示器关闭时，防止电脑自动进入睡眠”是可选的外，请关闭设置-节能器里的所有其他选项。
+
+
 ##### 日志
+- 2020.6.11
+  - 修复睡眠期间自动唤醒问题，感谢[@xxxzc](https://github.com/xxxzc)
 - 2020.6.10
   - 修复声卡过快加载导致系统无法识别问题，感谢[@Pinming](https://github.com/Pinming)
   - 添加HDMI音频输出，感谢[tctien342](https://github.com/tctien342)
@@ -50,9 +71,11 @@ Wireless | BCM94352Zz
 
 ##### 尚未测试
 - 连接HDMI时进行睡眠
+- 雷电是否工作
 
 ##### 下一步计划
-- 修复睡眠自动唤醒问题
+- ~~修复睡眠自动唤醒问题~~ 已修复
+- 驱动SD卡读卡器
 
 
 ##### 感谢
@@ -65,6 +88,7 @@ Wireless | BCM94352Zz
 - [@shadowed87](https://github.com/shadowed87)
 - [@Pinming](https://github.com/Pinming)
 - [tctien342](https://github.com/tctien342)
+- [@xxxzc](https://github.com/xxxzc)
 
 ##### Issue和Pull Requests
 - 本EFI仅针对XPS 7590 i7 9750 1080p版本修改，其他版本请勿直接使用
