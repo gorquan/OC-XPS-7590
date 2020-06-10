@@ -13,4 +13,4 @@
 
 ##### 异常情况
 - HDMI热插拔黑屏，解决方式见[geek5nan](https://github.com/geek5nan/Hackintosh-XPS7590/blob/master/README-CN.md)
-- 声卡或触控板有几率无法工作，如出现无法工作重启即可
+- ~~声卡或触控板有几率无法工作，如出现无法工作重启即可~~ 已解决
