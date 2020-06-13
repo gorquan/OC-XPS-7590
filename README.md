@@ -39,6 +39,7 @@ pmset -g | grep hibernatemode
 sudo pmset -a standby 0
 sudo pmset -a proximitywake 0
 sudo pmset -a hibernatemode 3 # 如果hibernatemode 不为3或0 执行此条命令
+sudo pmset -a tcpkeepalive 0 # 如果仍然睡不着可以尝试一下睡眠期间断开网络连接
 ```
 
 3. 除了“当显示器关闭时，防止电脑自动进入睡眠”是可选的外，请关闭设置-节能器里的所有其他选项。
@@ -70,12 +71,14 @@ sudo pmset -a hibernatemode 3 # 如果hibernatemode 不为3或0 执行此条命�
   - 参考geek5nan大佬的OpenCore 0.5.6进行改造
 
 ##### 尚未测试
-- 连接HDMI时进行睡眠
+- ~~连接HDMI时进行睡眠~~ 连接HDMI时可以进行睡眠，如果连接HDMI并使用Fn+Insert方式会关闭内屏，如果不连接HDMI使用Fn+Insert方式会进行睡眠。
 - 雷电是否工作
 
 ##### 下一步计划
 - ~~修复睡眠自动唤醒问题~~ 已修复
 - 驱动SD卡读卡器
+- 调整USB和雷电
+- 定制电池
 
 
 ##### 感谢
