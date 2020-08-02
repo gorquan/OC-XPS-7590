@@ -5,7 +5,7 @@ XPS 7590 with OpenCore
 
 OpenCore: 0.5.8 0.5.9
 
-MacOS: macOS Catalina 10.15.3(19D76) - 10.15.5(19F96)
+MacOS: macOS Catalina 10.15.3(19D76) - 10.15.6(19G73)
 
 ##### 配置信息
 Key | Value
@@ -23,7 +23,7 @@ Wireless | BCM94352Zz
 - **请先参考该文章：[XPS 7590 1.6.0 UEFI: unlock undervolting and remove CFG lock](https://www.reddit.com/r/Dell/comments/fzv599/xps_7590_160_uefi_unlock_undervolting_and_remove/)，对CFG Lock进行解锁再使用该OpenCore！**
 
 ##### 工作情况
-- ~~0.5.8 和 0.5.9的工作情况不一致，请根据自己的需求进行选择，详细工作情况请看对应文件夹下的README~~ 已解决触模板问题，建议使用0.5.9
+- 耳机会在某种特定情况下出现爆音或无声，其他正常工作
 
 
 ##### 睡眠处理
@@ -46,6 +46,8 @@ sudo pmset -a tcpkeepalive 0 # 如果仍然睡不着可以尝试一下睡眠期�
 
 
 ##### 日志
+- 2020.8.2
+  - 更新README，添加4K设备盖上盒子后再打开屏幕出现问题的[解决方案](https://github.com/gorquan/OC-XPS-7590/issues/3#issuecomment-654657348)，感谢[romancin](https://github.com/romancin)
 - 2020.6.11
   - 修复睡眠期间自动唤醒问题，感谢[@xxxzc](https://github.com/xxxzc)
 - 2020.6.10
@@ -71,15 +73,21 @@ sudo pmset -a tcpkeepalive 0 # 如果仍然睡不着可以尝试一下睡眠期�
   - 参考geek5nan大佬的OpenCore 0.5.6进行改造
 
 ##### 尚未测试
-- ~~连接HDMI时进行睡眠~~ 连接HDMI时可以进行睡眠，如果连接HDMI并使用Fn+Insert方式会关闭内屏，如果不连接HDMI使用Fn+Insert方式会进行睡眠。
 - 雷电是否工作
 
 ##### 下一步计划
-- ~~修复睡眠自动唤醒问题~~ 已修复
+- 更新Kexts
+- 更新使用情况图片
+- 修复外接耳机爆音或无声问题
 - 驱动SD卡读卡器
 - 调整USB和雷电
 - 定制电池
 
+
+##### 说明
+- 由于采用了PNP0C0D睡眠，因此Fn+Insert在外接HDMI情况下将关闭内屏而不是睡眠，当不外接HDMI时电脑将进行睡眠
+- 对于睡眠部分，请参考睡眠设置
+- 序列号应该是洗白状态，安装完成后可以尝试能否正常登录APPLE ID
 
 ##### 感谢
 - Apple
@@ -92,6 +100,7 @@ sudo pmset -a tcpkeepalive 0 # 如果仍然睡不着可以尝试一下睡眠期�
 - [@Pinming](https://github.com/Pinming)
 - [tctien342](https://github.com/tctien342)
 - [@xxxzc](https://github.com/xxxzc)
+- [romancin](https://github.com/romancin)
 
 ##### Issue和Pull Requests
 - 本EFI仅针对XPS 7590 i7 9750 1080p版本修改，其他版本请勿直接使用
