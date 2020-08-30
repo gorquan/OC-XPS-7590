@@ -1,49 +1,83 @@
 # OC-XPS-7590
 XPS 7590 with OpenCore
 
+> English Readme is coming soon!
+
 ##### 引导版本
 
 OpenCore: 0.5.8 0.5.9 **0.6.0**
 
-MacOS: macOS Catalina 10.15.3(19D76) - **10.15.6(19G73)**
+MacOS: 
+- macOS Catalina 10.15.3(19D76) - **10.15.6(19G73)** （确认版本）
+- macOS Big Sur 11.0 (网友测试，未确定)
 
 ##### 配置信息
 Key | Value
 --- | ---
-SKU | [XPS-7590](https://www.amazon.com/Generation-Dell-Corei7-9750H-GeForce-InfinityEdge/dp/B07T3FWD22?ref_=ast_sto_dp)
+型号 | [XPS-7590](https://www.amazon.com/Generation-Dell-Corei7-9750H-GeForce-InfinityEdge/dp/B07T3FWD22?ref_=ast_sto_dp)
 CPU | Intel Core i7 9750H
-iGPU | Intel Graphics UHD 630
-Builtin Screen | 15.6" 1080p 非触屏
-RAM | [Samsung M471A4G43MB1 2666 32G](https://www.amazon.sg/Samsung-2666MHz-Memory-Computers-M471A4G43MB1/dp/B07N124XDS) * 2
-SSD | TOSHIBA KXG60ZNV1T02 NVMe 1024GB 
-Audio | Realtek ALC298
-Wireless | BCM94352Zz(DW1560)
+核芯显卡 | Intel Graphics UHD 630
+内建显示屏 | 15.6" 1080p 非触屏
+内存 | [Samsung M471A4G43MB1 2666 32G](https://www.amazon.sg/Samsung-2666MHz-Memory-Computers-M471A4G43MB1/dp/B07N124XDS) * 2
+固态硬盘 | TOSHIBA KXG60ZNV1T02 NVMe 1024GB 
+板载声卡 | Realtek ALC298
+无限网卡 | BCM94352Zz(DW1560)
 
 ##### 使用前注意
 - **请先参考该文章：[XPS 7590 1.6.0 UEFI: unlock undervolting and remove CFG lock](https://www.reddit.com/r/Dell/comments/fzv599/xps_7590_160_uefi_unlock_undervolting_and_remove/)，对CFG Lock进行解锁再使用该OpenCore！**
+- 由于添加了读卡器驱动，可能会导致macOS Big Sur（11.0）无法正常使用。如果在macOS Big Sur下使用出现问题，请删除Sinetek-rtsx.kext。
+- 与kext相关的内容添加会同时同步到其他Opencore版本的config文件中，但**不保证可用性**，请自行测试，如有问题可以提交ISSUE或PR。**建议使用仓库最新版**
+- 使用前请先**更新序列号**，以免被苹果拉黑账号。
 
 ##### 工作情况
-- CPU：正常工作; 正常变频,最低频率800MHz; CPU温度正常
-- 声卡：正常工作; 支持耳机、内置扬声器和HDMI音频输出; 支持内建麦克风，**耳机会在某种特定情况下出现爆音或无声（极少）**
-- 核显：正常工作; 支持HDMI输出
-- 独显：无法工作，已经屏蔽
-- 内建显示屏：正常工作
-- 蓝牙：正常工作，能够正常连接。
-- 电池：正常工作，可以长达5小时续航
-- Wireless：正常工作，正常连接，能够使用Airport
-- 键盘：正常工作
-- 快捷键：正常工作
-- 触控板：正常工作
-- 盒盖睡眠：正常工作
-- 睡眠：正常
+- CPU：
+  - 正常工作
+  - 正常变频,最低频率800MHz
+  - 温度正常
+- 板载声卡：
+  - 正常工作
+  - 支持耳机、内置扬声器和HDMI音频输出
+  - 支持内建麦克风
+- 核芯显卡：
+  - 正常工作
+  - 支持HDMI输出
+- 内建显示屏：
+  - 正常工作
+- 蓝牙：
+  - 正常工作
+  - 能够与其他设备正常连接
+- 电池：
+  - 正常工作
+  - 续航时间可以长达5小时（电池健康情况下）
+- 无线网卡：
+  - 正常工作
+  - 隔空投送能够正常使用
+- 键盘：
+  - 正常工作
+  - 键盘灯能够正常显示
+  - 快捷键正常工作
+- 触控板：
+  - 正常工作
+- 睡眠：
+  - 正常工作
+  - 盒盖睡眠正常工作
+- 读卡器：
+  - 正常工作
+  
+##### 存在问题的设备
+- 板载声卡
+  - 插入耳机会在某种特定情况下会出现爆音或无声(目前知道的是在睡眠唤醒后出现该情况)
+- 独显
+  - 无法进行驱动，已经屏蔽
+- 读卡器
+  - 无法使用只读模式（内存卡加锁）
 
 ##### 结构目录
 - 最新版会提供完整的EFI，目前仓库最新版：**0.6.0**
-- 为了方便维护，已经将ACPI、Kext和Drivers目录独立出来，如果需要旧版本的Opencore，请自行组合EFI文件夹内容
+- 为了方便维护，已经将ACPI、Kext和Drivers目录独立出来，如果需要旧版本的Opencore，请自行组合EFI文件夹内容，**建议使用仓库最新版Opencore**
 
 ##### 驱动情况
-- 因为最新版驱动BCM无法打开WIFI，因此BrcmPatchRAM 未更新到2.5.4，AirportBrcmFixup未更新到2.0.8
-- 其他驱动已经更新到最新
+- 尚未进行核对
 
 ##### 睡眠处理
 1. 检查hibernatemode是否为0或3
@@ -65,6 +99,8 @@ sudo pmset -a tcpkeepalive 0 # 如果仍然睡不着可以尝试一下睡眠期�
 
 
 ##### 日志
+- 2020.8.30
+  - 添加读卡器驱动，能够对未上锁的内存卡进行读写，感谢[@cholonam](https://github.com/cholonam/Sinetek-rtsx)
 - 2020.8.9
   - 更新到Opencore 0.6.0
   - 添加Dell的传感器，可以查看和控制风扇转速
@@ -98,17 +134,20 @@ sudo pmset -a tcpkeepalive 0 # 如果仍然睡不着可以尝试一下睡眠期�
 
 ##### 尚未测试
 - 雷电是否工作
+- 读卡器驱动是否会对睡眠产生影响
 
 ##### 下一步计划
+- 更新驱动
+- 测试读卡器驱动是否会对睡眠产生影响
 - 修复外接耳机爆音或无声问题
-- 驱动SD卡读卡器
 - 调整USB和雷电
 - 定制电池
 
 ##### 说明
 - 由于采用了PNP0C0D睡眠，因此Fn+Insert在外接HDMI情况下将关闭内屏而不是睡眠，当不外接HDMI时电脑将进行睡眠
+
+##### 使用后优化
 - 对于睡眠部分，请参考睡眠设置
-- 使用前请先更新序列号，以免被苹果拉黑
 
 ##### 感谢
 - Apple
@@ -122,6 +161,7 @@ sudo pmset -a tcpkeepalive 0 # 如果仍然睡不着可以尝试一下睡眠期�
 - [@tctien342](https://github.com/tctien342)
 - [@xxxzc](https://github.com/xxxzc)
 - [@romancin](https://github.com/romancin)
+- [@cholonam](https://github.com/cholonam)
 
 ##### Issue和Pull Requests
 - 本EFI仅针对XPS 7590 i7 9750 1080p版本修改，其他版本请勿直接使用
