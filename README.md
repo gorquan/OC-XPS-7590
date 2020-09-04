@@ -25,7 +25,7 @@ CPU | Intel Core i7 9750H
 
 ##### 使用前注意
 - **请先参考该文章：[XPS 7590 1.6.0 UEFI: unlock undervolting and remove CFG lock](https://www.reddit.com/r/Dell/comments/fzv599/xps_7590_160_uefi_unlock_undervolting_and_remove/)，对CFG Lock进行解锁再使用该OpenCore！**
-- 由于添加了读卡器驱动，可能会导致macOS Big Sur（11.0）无法正常使用。如果在macOS Big Sur下使用出现问题，请删除Sinetek-rtsx.kext。
+- 由于添加了读卡器驱动，可能会导致macOS Big Sur（11.0）无法正常使用。如果在macOS Big Sur下使用出现问题，请删除Sinetek-rtsx.kext和config中与Sinetek-rtsx.kext有关配置。
 - 与kext相关的内容添加会同时同步到其他Opencore版本的config文件中，但**不保证可用性**，请自行测试，如有问题可以提交ISSUE或PR。**建议使用仓库最新版**
 - 使用前请先**更新序列号**，以免被苹果拉黑账号。
 
@@ -71,13 +71,15 @@ CPU | Intel Core i7 9750H
   - 无法进行驱动，已经屏蔽
 - 读卡器
   - 无法使用只读模式（内存卡加锁）
+- 雷电
+  - 未识别
 
 ##### 结构目录
 - 最新版会提供完整的EFI，目前仓库最新版：**0.6.0**
 - 为了方便维护，已经将ACPI、Kext和Drivers目录独立出来，如果需要旧版本的Opencore，请自行组合EFI文件夹内容，**建议使用仓库最新版Opencore**
 
 ##### 驱动情况
-- 尚未进行核对
+- 除了Brcm系列的Kext未更新，其余均为最新
 
 ##### 睡眠处理
 1. 检查hibernatemode是否为0或3
@@ -99,6 +101,9 @@ sudo pmset -a tcpkeepalive 0 # 如果仍然睡不着可以尝试一下睡眠期�
 
 
 ##### 日志
+- 2020.9.4
+  - 测试读卡器驱动是否会影响睡眠，未发现有影响
+  - 检测Kext是否有更新
 - 2020.8.30
   - 添加读卡器驱动，能够对未上锁的内存卡进行读写，感谢[@cholonam](https://github.com/cholonam/Sinetek-rtsx)
 - 2020.8.9
@@ -134,11 +139,9 @@ sudo pmset -a tcpkeepalive 0 # 如果仍然睡不着可以尝试一下睡眠期�
 
 ##### 尚未测试
 - 雷电是否工作
-- 读卡器驱动是否会对睡眠产生影响
+
 
 ##### 下一步计划
-- 更新驱动
-- 测试读卡器驱动是否会对睡眠产生影响
 - 修复外接耳机爆音或无声问题
 - 调整USB和雷电
 - 定制电池
