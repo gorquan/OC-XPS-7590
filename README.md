@@ -3,6 +3,8 @@ XPS 7590 with OpenCore
 
 > English Readme is coming soon!
 
+## 暂时放弃更新Opencore 0.6.1，遇到的问题太多
+
 ### 引导版本
 
 OpenCore: 0.5.8 0.5.9 **0.6.0**
