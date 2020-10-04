@@ -3,15 +3,13 @@ XPS 7590 with OpenCore
 
 > English Readme is coming soon!
 
-## 暂时放弃更新Opencore 0.6.1，遇到的问题太多
-
 ### 引导版本
 
-OpenCore: 0.5.8 0.5.9 **0.6.0**
+OpenCore: 0.5.8 0.5.9 0.6.0 **0.6.1**
 
 MacOS: 
-- macOS Catalina 10.15.3(19D76) - **10.15.6(19G73)** （确认版本）
-- macOS Big Sur 11.0 (网友测试，未确定)
+- macOS Catalina 10.15.3(19D76) - **10.15.7(19H2)** （确认版本）
+- macOS Big Sur 11.0 （网友测试，遇到问题不提供技术支持）
 
 ### 配置信息
 Key | Value
@@ -27,6 +25,7 @@ CPU | Intel Core i7 9750H
 
 ### 使用前注意
 - **请先参考该文章：[XPS 7590 1.6.0 UEFI: unlock undervolting and remove CFG lock](https://www.reddit.com/r/Dell/comments/fzv599/xps_7590_160_uefi_unlock_undervolting_and_remove/)，对CFG Lock进行解锁再使用该OpenCore！**
+- 本人只有1080p版本，对于4K版本出现的问题视情况支持
 - 由于添加了读卡器驱动，可能会导致macOS Big Sur（11.0）无法正常使用。如果在macOS Big Sur下使用出现问题，请删除Sinetek-rtsx.kext和config中与Sinetek-rtsx.kext有关配置。
 - 目前仅为完善macOS，可能会导致Windows出现不稳定情况。如果有不稳定现象，欢迎提交issue。
 - 与kext相关的内容添加会同时同步到其他Opencore版本的config文件中，但**不保证可用性**，请自行测试，如有问题可以提交ISSUE或PR。**建议使用仓库最新版**
@@ -74,11 +73,11 @@ CPU | Intel Core i7 9750H
   - 无法使用只读模式（内存卡加锁）
 
 ### 结构目录
-- 最新版会提供完整的EFI，目前仓库最新版：**0.6.0**
+- 最新版会提供完整的EFI，目前仓库最新版：**0.6.1**
 - 为了方便维护，已经将ACPI、Kext和Drivers目录独立出来，如果需要旧版本的Opencore，请自行组合EFI文件夹内容，**建议使用仓库最新版Opencore**
 
 ### 驱动情况
-- 除了Brcm系列的Kext未更新，其余均为最新
+- 全部驱动为最新
 
 ### 睡眠处理
 1. 检查hibernatemode是否为0或3
@@ -120,6 +119,12 @@ sudo pmset -a tcpkeepalive 0 # 如果仍然睡不着可以尝试一下睡眠期�
 如果采用两者，则**不要**再将`hda-verb`安装在`/usr/local/bin`目录下面，因为`ALCPlugFix`已经安装`hda-verb`到系统。
 
 ### 日志
+- 2020.10.4
+  - 更新README
+  - 更新到Opencore 0.6.1
+  - 所有Kext更新到最新版本
+  - 解决DW1560无法打开WIFI问题
+  - 解决声卡无法加载问题
 - 2020.9.5
   - 更新README
   - 添加ALCPlugFix修复方式，具体见[ALCPlugFix](https://github.com/gorquan/ALCPlugFix)
