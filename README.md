@@ -5,7 +5,7 @@ XPS 7590 with OpenCore
 
 ### 引导版本
 
-OpenCore: 0.5.8 0.5.9 0.6.0 **0.6.1**
+OpenCore: 0.5.8 0.5.9 0.6.0 0.6.1 **0.6.2**
 
 MacOS: 
 - macOS Catalina 10.15.3(19D76) - **10.15.7(19H2)** （确认版本）
@@ -73,7 +73,7 @@ CPU | Intel Core i7 9750H
   - 无法使用只读模式（内存卡加锁）
 
 ### 结构目录
-- 最新版会提供完整的EFI，目前仓库最新版：**0.6.1**
+- 最新版会提供完整的EFI，目前仓库最新版：**0.6.2**
 - 为了方便维护，已经将ACPI、Kext和Drivers目录独立出来，如果需要旧版本的Opencore，请自行组合EFI文件夹内容，**建议使用仓库最新版Opencore**
 
 ### 驱动情况
@@ -119,6 +119,10 @@ sudo pmset -a tcpkeepalive 0 # 如果仍然睡不着可以尝试一下睡眠期�
 如果采用两者，则**不要**再将`hda-verb`安装在`/usr/local/bin`目录下面，因为`ALCPlugFix`已经安装`hda-verb`到系统。
 
 ### 日志
+- 2020.10.8
+  - 更新README
+  - 更新到Opencore 0.6.2
+  - 所有Kext更新到最新版本
 - 2020.10.4
   - 更新README
   - 更新到Opencore 0.6.1
