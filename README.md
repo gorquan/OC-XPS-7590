@@ -1,51 +1,85 @@
 # OC-XPS-7590
 XPS 7590 with OpenCore
 
-##### 引导版本
+> English Readme is coming soon!
 
-OpenCore: 0.5.8 0.5.9 **0.6.0**
+### 引导版本
 
-MacOS: macOS Catalina 10.15.3(19D76) - **10.15.6(19G73)**
+OpenCore: 0.5.8 0.5.9 0.6.0 0.6.1 **0.6.2**
 
-##### 配置信息
+MacOS: 
+- macOS Catalina 10.15.3(19D76) - **10.15.7(19H2)** （确认版本）
+- macOS Big Sur 11.0 （网友测试，遇到问题不提供技术支持）
+
+### 配置信息
 Key | Value
 --- | ---
-SKU | [XPS-7590](https://www.amazon.com/Generation-Dell-Corei7-9750H-GeForce-InfinityEdge/dp/B07T3FWD22?ref_=ast_sto_dp)
+型号 | [XPS-7590](https://www.amazon.com/Generation-Dell-Corei7-9750H-GeForce-InfinityEdge/dp/B07T3FWD22?ref_=ast_sto_dp)
 CPU | Intel Core i7 9750H
-iGPU | Intel Graphics UHD 630
-Builtin Screen | 15.6" 1080p 非触屏
-RAM | [Samsung M471A4G43MB1 2666 32G](https://www.amazon.sg/Samsung-2666MHz-Memory-Computers-M471A4G43MB1/dp/B07N124XDS) * 2
-SSD | TOSHIBA KXG60ZNV1T02 NVMe 1024GB 
-Audio | Realtek ALC298
-Wireless | BCM94352Zz(DW1560)
+核芯显卡 | Intel Graphics UHD 630
+内建显示屏 | 15.6" 1080p 非触屏
+内存 | [Samsung M471A4G43MB1 2666 32G](https://www.amazon.sg/Samsung-2666MHz-Memory-Computers-M471A4G43MB1/dp/B07N124XDS) * 2
+固态硬盘 | TOSHIBA KXG60ZNV1T02 NVMe 1024GB 
+板载声卡 | Realtek ALC298
+无限网卡 | BCM94352Zz(DW1560)
 
-##### 使用前注意
+### 使用前注意
 - **请先参考该文章：[XPS 7590 1.6.0 UEFI: unlock undervolting and remove CFG lock](https://www.reddit.com/r/Dell/comments/fzv599/xps_7590_160_uefi_unlock_undervolting_and_remove/)，对CFG Lock进行解锁再使用该OpenCore！**
+- 本人只有1080p版本，对于4K版本出现的问题视情况支持
+- 由于添加了读卡器驱动，可能会导致macOS Big Sur（11.0）无法正常使用。如果在macOS Big Sur下使用出现问题，请删除Sinetek-rtsx.kext和config中与Sinetek-rtsx.kext有关配置。
+- 目前仅为完善macOS，可能会导致Windows出现不稳定情况。如果有不稳定现象，欢迎提交issue。
+- 与kext相关的内容添加会同时同步到其他Opencore版本的config文件中，但**不保证可用性**，请自行测试，如有问题可以提交ISSUE或PR。**建议使用仓库最新版**
+- 使用前请先**更新序列号**，以免被苹果拉黑账号。
 
-##### 工作情况
-- CPU：正常工作; 正常变频,最低频率800MHz; CPU温度正常
-- 声卡：正常工作; 支持耳机、内置扬声器和HDMI音频输出; 支持内建麦克风，**耳机会在某种特定情况下出现爆音或无声（极少）**
-- 核显：正常工作; 支持HDMI输出
-- 独显：无法工作，已经屏蔽
-- 内建显示屏：正常工作
-- 蓝牙：正常工作，能够正常连接。
-- 电池：正常工作，可以长达5小时续航
-- Wireless：正常工作，正常连接，能够使用Airport
-- 键盘：正常工作
-- 快捷键：正常工作
-- 触控板：正常工作
-- 盒盖睡眠：正常工作
-- 睡眠：正常
+### 工作情况
+- CPU：
+  - 正常工作
+  - 正常变频,最低频率800MHz
+  - 温度正常
+- 板载声卡：
+  - 正常工作
+  - 支持耳机、内置扬声器和HDMI音频输出
+  - 支持内建麦克风
+- 核芯显卡：
+  - 正常工作
+  - 支持HDMI输出
+- 内建显示屏：
+  - 正常工作
+- 蓝牙：
+  - 正常工作
+  - 能够与其他设备正常连接
+- 电池：
+  - 正常工作
+  - 续航时间可以长达5小时（电池健康情况下）
+- 无线网卡：
+  - 正常工作
+  - 隔空投送能够正常使用
+- 键盘：
+  - 正常工作
+  - 键盘灯能够正常显示
+  - 快捷键正常工作
+- 触控板：
+  - 正常工作
+- 睡眠：
+  - 正常工作
+  - 盒盖睡眠正常工作
+- 读卡器：
+  - 正常工作
+  
+### 存在问题的设备
+- 独显
+  - 无法进行驱动，已经屏蔽
+- 读卡器
+  - 无法使用只读模式（内存卡加锁）
 
-##### 结构目录
-- 最新版会提供完整的EFI，目前仓库最新版：**0.6.0**
-- 为了方便维护，已经将ACPI、Kext和Drivers目录独立出来，如果需要旧版本的Opencore，请自行组合EFI文件夹内容
+### 结构目录
+- 最新版会提供完整的EFI，目前仓库最新版：**0.6.2**
+- 为了方便维护，已经将ACPI、Kext和Drivers目录独立出来，如果需要旧版本的Opencore，请自行组合EFI文件夹内容，**建议使用仓库最新版Opencore**
 
-##### 驱动情况
-- 因为最新版驱动BCM无法打开WIFI，因此BrcmPatchRAM 未更新到2.5.4，AirportBrcmFixup未更新到2.0.8
-- 其他驱动已经更新到最新
+### 驱动情况
+- 全部驱动为最新
 
-##### 睡眠处理
+### 睡眠处理
 1. 检查hibernatemode是否为0或3
 
 ``` shell
@@ -63,8 +97,48 @@ sudo pmset -a tcpkeepalive 0 # 如果仍然睡不着可以尝试一下睡眠期�
 
 3. 除了“当显示器关闭时，防止电脑自动进入睡眠”是可选的外，请关闭设置-节能器里的所有其他选项。
 
+### 声卡问题处理
+板载声卡如果在电池供电状态下使用耳机，并从睡眠中唤醒会出现无声/爆音问题
 
-##### 日志
+* 原因
+
+唤醒前`nid = 0x18 --> result 0x00000024`，唤醒后`nid = 0x18 --> result 0x00000000`，更改`nid = 0x18`的`result`为`0x00000024`即可正常发生
+
+* 解决方式
+
+有两种解决方式
+  - 使用[ALCPlugFix](https://github.com/gorquan/ALCPlugFix),出现问题后**插拔耳机**
+  - 执行以下命令：`hda-verb 0x18 SET_PIN_WIDGET_CONTROL 0x24`，需要参考**hda-verb安装**步骤
+
+* hda-verb安装
+
+`hda-verb`放置于`software`文件夹下，下载后请将其**放置**在`/usr/local/bin`目录下面
+
+* 注意
+  
+如果采用两者，则**不要**再将`hda-verb`安装在`/usr/local/bin`目录下面，因为`ALCPlugFix`已经安装`hda-verb`到系统。
+
+### 日志
+- 2020.10.8
+  - 更新README
+  - 更新到Opencore 0.6.2
+  - 所有Kext更新到最新版本
+- 2020.10.4
+  - 更新README
+  - 更新到Opencore 0.6.1
+  - 所有Kext更新到最新版本
+  - 解决DW1560无法打开WIFI问题
+  - 解决声卡无法加载问题
+- 2020.9.5
+  - 更新README
+  - 添加ALCPlugFix修复方式，具体见[ALCPlugFix](https://github.com/gorquan/ALCPlugFix)
+  - 发现声卡无声原因，解决方案见声卡问题处理，感谢[@illusion899](https://github.com/illusion899)帮忙测试
+  - 添加了雷电3的SSDT，感谢[@daliansky](https://github.com/daliansky)
+- 2020.9.4
+  - 测试读卡器驱动是否会影响睡眠，未发现有影响
+  - 检测Kext是否有更新
+- 2020.8.30
+  - 添加读卡器驱动，能够对未上锁的内存卡进行读写，感谢[@cholonam](https://github.com/cholonam/Sinetek-rtsx)
 - 2020.8.9
   - 更新到Opencore 0.6.0
   - 添加Dell的传感器，可以查看和控制风扇转速
@@ -96,21 +170,21 @@ sudo pmset -a tcpkeepalive 0 # 如果仍然睡不着可以尝试一下睡眠期�
 - 2020.5.19
   - 参考geek5nan大佬的OpenCore 0.5.6进行改造
 
-##### 尚未测试
+### 尚未测试
 - 雷电是否工作
 
-##### 下一步计划
-- 修复外接耳机爆音或无声问题
-- 驱动SD卡读卡器
-- 调整USB和雷电
+### 下一步计划
+- 调整USB
 - 定制电池
 
-##### 说明
+### 说明
 - 由于采用了PNP0C0D睡眠，因此Fn+Insert在外接HDMI情况下将关闭内屏而不是睡眠，当不外接HDMI时电脑将进行睡眠
-- 对于睡眠部分，请参考睡眠设置
-- 使用前请先更新序列号，以免被苹果拉黑
 
-##### 感谢
+### 使用后优化
+- 对于睡眠部分，请参考睡眠设置
+- 对于电池供电下唤醒导致耳机爆音/无声等问题，请参考声卡问题处理
+
+### 感谢
 - Apple
 - [@Acidanthera](https://github.com/acidanthera)
 - [@daliansky](https://github.com/daliansky)
@@ -122,8 +196,10 @@ sudo pmset -a tcpkeepalive 0 # 如果仍然睡不着可以尝试一下睡眠期�
 - [@tctien342](https://github.com/tctien342)
 - [@xxxzc](https://github.com/xxxzc)
 - [@romancin](https://github.com/romancin)
+- [@cholonam](https://github.com/cholonam)
+- [@illusion899](https://github.com/illusion899)
 
-##### Issue和Pull Requests
+### Issue和Pull Requests
 - 本EFI仅针对XPS 7590 i7 9750 1080p版本修改，其他版本请勿直接使用
 - 请先参考OpenCore官方文档和黑果小兵的博客解决问题，如果是本人配置文件有误欢迎提出Issue
 - 请说明配置和型号，再描述出现的状况
