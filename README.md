@@ -119,6 +119,8 @@ sudo pmset -a tcpkeepalive 0 # 如果仍然睡不着可以尝试一下睡眠期�
 如果采用两者，则**不要**再将`hda-verb`安装在`/usr/local/bin`目录下面，因为`ALCPlugFix`已经安装`hda-verb`到系统。
 
 ### 日志
+- 2020.10.18
+  - 更新所有Kext到最新版本
 - 2020.10.8
   - 更新README
   - 更新到Opencore 0.6.2
