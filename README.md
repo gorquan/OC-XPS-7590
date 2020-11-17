@@ -5,11 +5,11 @@ XPS 7590 with OpenCore
 
 ### 引导版本
 
-OpenCore: 0.5.8 0.5.9 0.6.0 0.6.1 **0.6.2**
+OpenCore: 0.5.8 0.5.9 0.6.0 0.6.1 0.6.2 **0.6.3**
 
 MacOS: 
-- macOS Catalina 10.15.3(19D76) - **10.15.7(19H2)** （确认版本）
-- macOS Big Sur 11.0 （网友测试，遇到问题不提供技术支持）
+- macOS Catalina 10.15.3(19D76) - 10.15.7(19H2)
+- macOS Big Sur **11.0.1**
 
 ### 配置信息
 Key | Value
@@ -17,7 +17,7 @@ Key | Value
 型号 | [XPS-7590](https://www.amazon.com/Generation-Dell-Corei7-9750H-GeForce-InfinityEdge/dp/B07T3FWD22?ref_=ast_sto_dp)
 CPU | Intel Core i7 9750H
 核芯显卡 | Intel Graphics UHD 630
-内建显示屏 | 15.6" 1080p 非触屏
+内建显示屏 | 15.6" 1080p **非触屏**
 内存 | [Samsung M471A4G43MB1 2666 32G](https://www.amazon.sg/Samsung-2666MHz-Memory-Computers-M471A4G43MB1/dp/B07N124XDS) * 2
 固态硬盘 | TOSHIBA KXG60ZNV1T02 NVMe 1024GB 
 板载声卡 | Realtek ALC298
@@ -25,8 +25,7 @@ CPU | Intel Core i7 9750H
 
 ### 使用前注意
 - **请先参考该文章：[XPS 7590 1.6.0 UEFI: unlock undervolting and remove CFG lock](https://www.reddit.com/r/Dell/comments/fzv599/xps_7590_160_uefi_unlock_undervolting_and_remove/)，对CFG Lock进行解锁再使用该OpenCore！**
-- 本人只有1080p版本，对于4K版本出现的问题视情况支持
-- 由于添加了读卡器驱动，可能会导致macOS Big Sur（11.0）无法正常使用。如果在macOS Big Sur下使用出现问题，请删除Sinetek-rtsx.kext和config中与Sinetek-rtsx.kext有关配置。
+- 本人只有1080p版本，**只支持1080p版本**
 - 目前仅为完善macOS，可能会导致Windows出现不稳定情况。如果有不稳定现象，欢迎提交issue。
 - 与kext相关的内容添加会同时同步到其他Opencore版本的config文件中，但**不保证可用性**，请自行测试，如有问题可以提交ISSUE或PR。**建议使用仓库最新版**
 - 使用前请先**更新序列号**，以免被苹果拉黑账号。
@@ -73,7 +72,7 @@ CPU | Intel Core i7 9750H
   - 无法使用只读模式（内存卡加锁）
 
 ### 结构目录
-- 最新版会提供完整的EFI，目前仓库最新版：**0.6.2**
+- 最新版会提供完整的EFI，目前仓库最新版：**0.6.3**
 - 为了方便维护，已经将ACPI、Kext和Drivers目录独立出来，如果需要旧版本的Opencore，请自行组合EFI文件夹内容，**建议使用仓库最新版Opencore**
 
 ### 驱动情况
@@ -119,6 +118,10 @@ sudo pmset -a tcpkeepalive 0 # 如果仍然睡不着可以尝试一下睡眠期�
 如果采用两者，则**不要**再将`hda-verb`安装在`/usr/local/bin`目录下面，因为`ALCPlugFix`已经安装`hda-verb`到系统。
 
 ### 日志
+- 2020.11.16
+  - 更新README
+  - 更新到Opencore 0.6.3
+  - 所有Kext更新到最新版本
 - 2020.10.18
   - 更新所有Kext到最新版本
 - 2020.10.8
@@ -176,15 +179,18 @@ sudo pmset -a tcpkeepalive 0 # 如果仍然睡不着可以尝试一下睡眠期�
 - 雷电是否工作
 
 ### 下一步计划
+- 声卡hda-verb无法使用处理
 - 调整USB
 - 定制电池
 
 ### 说明
 - 由于采用了PNP0C0D睡眠，因此Fn+Insert在外接HDMI情况下将关闭内屏而不是睡眠，当不外接HDMI时电脑将进行睡眠
+- OC 0.6.3支持从10.15.7平滑升级到11.0.1，无须重装
 
 ### 使用后优化
 - 对于睡眠部分，请参考睡眠设置
 - 对于电池供电下唤醒导致耳机爆音/无声等问题，请参考声卡问题处理
+- 对于升级11.0.1后sech进程一直占用CPU，请打开iCloud密钥串同步开关，即可解决
 
 ### 感谢
 - Apple
@@ -202,8 +208,9 @@ sudo pmset -a tcpkeepalive 0 # 如果仍然睡不着可以尝试一下睡眠期�
 - [@illusion899](https://github.com/illusion899)
 
 ### Issue和Pull Requests
-- 本EFI仅针对XPS 7590 i7 9750 1080p版本修改，其他版本请勿直接使用
+- 本EFI仅针对XPS 7590 i7 9750 1080p版本修改，**其他版本请勿直接使用**
 - 请先参考OpenCore官方文档和黑果小兵的博客解决问题，如果是本人配置文件有误欢迎提出Issue
 - 请说明配置和型号，再描述出现的状况
 - 仅供学习使用，造成硬件上的损坏与本人无关
+- 本人拒绝伸手党和白嫖党，伸手党和白嫖党提出的ISSUE一律关闭处理
 
