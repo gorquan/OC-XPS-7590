@@ -5,11 +5,11 @@ XPS 7590 with OpenCore
 
 ### 引导版本
 
-OpenCore: 0.5.8 0.5.9 0.6.0 0.6.1 0.6.2 0.6.3 **0.6.4**
+OpenCore: 0.5.8 0.5.9 0.6.0 0.6.1 0.6.2 0.6.3 0.6.4 **0.6.5**
 
 MacOS: 
 - macOS Catalina 10.15.3(19D76) - 10.15.7(19H2)
-- macOS Big Sur **11.0.1**
+- macOS Big Sur 11.0 **11.1**
 
 ### 配置信息
 Key | Value
@@ -73,7 +73,7 @@ CPU | Intel Core i7 9750H
   - 无法使用只读模式（内存卡加锁）
 
 ### 结构目录
-- 最新版会提供完整的EFI，目前仓库最新版：**0.6.4**
+- 最新版会提供完整的EFI，目前仓库最新版：**0.6.5**
 - 为了方便维护，已经将ACPI、Kext和Drivers目录独立出来，如果需要旧版本的Opencore，请自行组合EFI文件夹内容，**建议使用仓库最新版Opencore**
 
 ### 驱动情况
@@ -121,6 +121,10 @@ sudo pmset -a tcpkeepalive 0 # 如果仍然睡不着可以尝试一下睡眠期�
 如果采用两者，则**不要**再将`hda-verb`安装在`/usr/local/bin`目录下面，因为`ALCPlugFix`已经安装`hda-verb`到系统。
 
 ### 日志
+- 2021.1.9
+  - 更新README
+  - 更新到Opencore 0.6.5
+  - 所有Kext更新到最新版本
 - 2020.12.12
   - 更新README
   - 更新到Opencore 0.6.4
@@ -192,13 +196,13 @@ sudo pmset -a tcpkeepalive 0 # 如果仍然睡不着可以尝试一下睡眠期�
 
 ### 说明
 - 由于采用了PNP0C0D睡眠，因此Fn+Insert在外接HDMI情况下将关闭内屏而不是睡眠，当不外接HDMI时电脑将进行睡眠
-- OC 0.6.3支持从10.15.7平滑升级到11.0.1，无须重装
+- OC 0.6.3支持从10.15.7平滑升级到11.0，无须重装
 - 升级0.6.4请参考文章进行升级 [When upgrading to 0.6.4 we recommend](https://github.com/acidanthera/bugtracker/issues/1222#issuecomment-739241310)
 
 ### 使用后优化
 - 对于睡眠部分，请参考睡眠设置
 - 对于电池供电下唤醒导致耳机爆音/无声等问题，请参考声卡问题处理 **目前脚本暂时没时间更新，近期会进行更新**
-- 对于升级11.0.1后sech进程一直占用CPU，请打开iCloud密钥串同步开关，即可解决
+- 对于升级11.1后sech进程一直占用CPU，请打开iCloud密钥串同步开关，即可解决
 
 ### 感谢
 - Apple
