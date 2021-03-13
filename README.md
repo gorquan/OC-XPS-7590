@@ -1,15 +1,13 @@
 # OC-XPS-7590
 XPS 7590 with OpenCore
 
-> English Readme is coming soon!
-
 ### 引导版本
 
-OpenCore: 0.5.8 0.5.9 0.6.0 0.6.1 0.6.2 0.6.3 0.6.4 **0.6.5**
+OpenCore: 0.5.8 0.5.9 0.6.0 0.6.1 0.6.2 0.6.3 0.6.4 0.6.5 **0.6.7**
 
 MacOS: 
 - macOS Catalina 10.15.3(19D76) - 10.15.7(19H2)
-- macOS Big Sur 11.0 **11.1**
+- macOS Big Sur 11.0 11.1 **11.2(20D91)**
 
 ### 配置信息
 Key | Value
@@ -25,11 +23,10 @@ CPU | Intel Core i7 9750H
 
 ### 使用前注意
 - **请先参考该文章：[XPS 7590 1.6.0 UEFI: unlock undervolting and remove CFG lock](https://www.reddit.com/r/Dell/comments/fzv599/xps_7590_160_uefi_unlock_undervolting_and_remove/)，对CFG Lock进行解锁再使用该OpenCore！**
-- 本人只有1080p版本，**只支持1080p版本**
-- 目前仅为完善macOS，可能会导致Windows出现不稳定情况。如果有不稳定现象，欢迎提交issue。
+- 目前仅为完善macOS，可能会导致Windows出现不稳定情况。
 - 与kext相关的内容添加会同时同步到其他Opencore版本的config文件中，但**不保证可用性**，请自行测试，如有问题可以提交ISSUE或PR。**建议使用仓库最新版**
 - 使用前请先**更新序列号**，以免被苹果拉黑账号。
-
+- 请各基于本仓库的定制版，注明来源并更新机器序列号再进行使用，谢谢！
 
 ### 工作情况
 - CPU：
@@ -73,54 +70,17 @@ CPU | Intel Core i7 9750H
   - 无法使用只读模式（内存卡加锁）
 
 ### 结构目录
-- 最新版会提供完整的EFI，目前仓库最新版：**0.6.5**
+- 最新版会提供完整的EFI，目前仓库最新版：**0.6.7**
 - 为了方便维护，已经将ACPI、Kext和Drivers目录独立出来，如果需要旧版本的Opencore，请自行组合EFI文件夹内容，**建议使用仓库最新版Opencore**
 
 ### 驱动情况
 - 全部驱动为最新
 
-### 睡眠处理
-1. 检查hibernatemode是否为0或3
-
-``` shell
-pmset -g | grep hibernatemode
-```
-
-2. 在终端执行以下命令
-
-``` shell
-sudo pmset -a standby 0
-sudo pmset -a proximitywake 0
-sudo pmset -a hibernatemode 3 # 如果hibernatemode 不为3或0 执行此条命令
-sudo pmset -a tcpkeepalive 0 # 如果仍然睡不着可以尝试一下睡眠期间断开网络连接
-```
-
-3. 除了“当显示器关闭时，防止电脑自动进入睡眠”是可选的外，请关闭设置-节能器里的所有其他选项。
-
-### 声卡问题处理
-> 以下方法待修复
-
-板载声卡如果在电池供电状态下使用耳机，并从睡眠中唤醒会出现无声/爆音问题
-
-* 原因
-
-唤醒前`nid = 0x18 --> result 0x00000024`，唤醒后`nid = 0x18 --> result 0x00000000`，更改`nid = 0x18`的`result`为`0x00000024`即可正常发生
-
-* 解决方式
-
-有两种解决方式
-  - 使用[ALCPlugFix](https://github.com/gorquan/ALCPlugFix),出现问题后**插拔耳机**
-  - 执行以下命令：`hda-verb 0x18 SET_PIN_WIDGET_CONTROL 0x24`，需要参考**hda-verb安装**步骤
-
-* hda-verb安装
-
-`hda-verb`放置于`software`文件夹下，下载后请将其**放置**在`/usr/local/bin`目录下面
-
-* 注意
-  
-如果采用两者，则**不要**再将`hda-verb`安装在`/usr/local/bin`目录下面，因为`ALCPlugFix`已经安装`hda-verb`到系统。
-
-### 日志
+### 引导更新日志
+- 2021.3.14
+  - 更新README
+  - 更新到Opencore 0.6.7
+  - 所有Kext更新到最新版本
 - 2021.1.9
   - 更新README
   - 更新到Opencore 0.6.5
@@ -186,23 +146,67 @@ sudo pmset -a tcpkeepalive 0 # 如果仍然睡不着可以尝试一下睡眠期�
 - 2020.5.19
   - 参考geek5nan大佬的OpenCore 0.5.6进行改造
 
+### 引导补充说明
+- 由于采用了PNP0C0D睡眠，因此Fn+Insert在外接HDMI情况下将关闭内屏而不是睡眠，当不外接HDMI时电脑将进行睡眠
+- OC 0.6.3支持从MacOS10.15.7平滑升级到MacOS11.0，无须重装。建议先将OC更新到最新版本再对MacOS进行升级，以免出现不可预估的问题。
+- 升级0.6.4请参考文章进行升级 [When upgrading to 0.6.4 we recommend](https://github.com/acidanthera/bugtracker/issues/1222#issuecomment-739241310)
+- 由于0.6.6是一个较大的改动[PSA: OpenCore 0.6.6 will require you to jump through a few more hoops](https://www.reddit.com/r/hackintosh/comments/lb2456/psa_opencore_066_will_require_you_to_jump_through/)，且存在未知问题放弃适配。低版本用户可以直接升级到0.6.7，建议按照该文章进行升级，以免出现不可预估的问题 [Updating Bootstrap in 0.6.6](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootstrap.html#updating-bootstrap-in-0-6-6)
+
+### 进入系统后优化
+- 对于睡眠部分，请参考睡眠设置
+- 对于电池供电下唤醒导致耳机爆音/无声等问题，请参考声卡问题处理 **目前脚本暂时没时间更新，近期会进行更新**
+- 对于升级11.1后sech进程一直占用CPU，请打开iCloud密钥串同步开关，即可解决
+
+### 睡眠处理
+1. 检查hibernatemode是否为0或3
+
+``` shell
+pmset -g | grep hibernatemode
+```
+
+2. 在终端执行以下命令
+
+``` shell
+sudo pmset -a standby 0
+sudo pmset -a proximitywake 0
+sudo pmset -a hibernatemode 3 # 如果hibernatemode 不为3或0 执行此条命令
+sudo pmset -a tcpkeepalive 0 # 如果仍然睡不着可以尝试一下睡眠期间断开网络连接
+```
+
+3. 除了“当显示器关闭时，防止电脑自动进入睡眠”是可选的外，请关闭设置-节能器里的所有其他选项。
+
+### 声卡问题处理
+> 以下方法待修复
+
+板载声卡如果在电池供电状态下使用耳机，并从睡眠中唤醒会出现无声/爆音问题
+
+* 原因
+
+唤醒前`nid = 0x18 --> result 0x00000024`，唤醒后`nid = 0x18 --> result 0x00000000`，更改`nid = 0x18`的`result`为`0x00000024`即可正常发声
+
+* 解决方式
+
+有两种解决方式
+  - 使用[ALCPlugFix](https://github.com/gorquan/ALCPlugFix),出现问题后**插拔耳机**
+  - 执行以下命令：`hda-verb 0x18 SET_PIN_WIDGET_CONTROL 0x24`，需要参考**hda-verb安装**步骤
+
+* hda-verb安装
+
+`hda-verb`放置于`software`文件夹下，下载后请将其**放置**在`/usr/local/bin`目录下面
+
+* 注意
+  
+如果采用两者，则**不要**再将`hda-verb`安装在`/usr/local/bin`目录下面，因为`ALCPlugFix`已经安装`hda-verb`到系统。
+
 ### 尚未测试
 - 雷电是否工作
 
 ### 下一步计划
 - 声卡hda-verb无法使用处理
+- 亮度控制加载缓慢排查
+- 配置调优，使其更适合运行MacOS
 - 调整USB
 - 定制电池
-
-### 说明
-- 由于采用了PNP0C0D睡眠，因此Fn+Insert在外接HDMI情况下将关闭内屏而不是睡眠，当不外接HDMI时电脑将进行睡眠
-- OC 0.6.3支持从10.15.7平滑升级到11.0，无须重装
-- 升级0.6.4请参考文章进行升级 [When upgrading to 0.6.4 we recommend](https://github.com/acidanthera/bugtracker/issues/1222#issuecomment-739241310)
-
-### 使用后优化
-- 对于睡眠部分，请参考睡眠设置
-- 对于电池供电下唤醒导致耳机爆音/无声等问题，请参考声卡问题处理 **目前脚本暂时没时间更新，近期会进行更新**
-- 对于升级11.1后sech进程一直占用CPU，请打开iCloud密钥串同步开关，即可解决
 
 ### 感谢
 - Apple
@@ -219,10 +223,4 @@ sudo pmset -a tcpkeepalive 0 # 如果仍然睡不着可以尝试一下睡眠期�
 - [@cholonam](https://github.com/cholonam)
 - [@illusion899](https://github.com/illusion899)
 
-### Issue和Pull Requests
-- 本EFI仅针对XPS 7590 i7 9750 1080p版本修改，**其他版本请勿直接使用**
-- 请先参考OpenCore官方文档和黑果小兵的博客解决问题，如果是本人配置文件有误欢迎提出Issue
-- 请说明配置和型号，再描述出现的状况
-- 仅供学习使用，造成硬件上的损坏与本人无关
-- 本人拒绝伸手党和白嫖党，伸手党和白嫖党提出的ISSUE一律关闭处理
 
