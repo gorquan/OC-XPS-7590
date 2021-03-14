@@ -1178,7 +1178,7 @@
 			<key>7C436110-AB2A-4BBB-A880-FE41995C9F82</key>
 			<dict>
 				<key>boot-args</key>
-				<string>brcmfx-country=#a agdpmod=vit9696 igfxfw=2</string>
+				<string>brcmfx-country=#a agdpmod=vit9696 igfxfw=2 alcverbs=1</string>
 				<key>run-efi-updater</key>
 				<string>No</string>
 				<key>csr-active-config</key>

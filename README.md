@@ -24,7 +24,7 @@ CPU | Intel Core i7 9750H
 ### 使用前注意
 - **请先参考该文章：[XPS 7590 1.6.0 UEFI: unlock undervolting and remove CFG lock](https://www.reddit.com/r/Dell/comments/fzv599/xps_7590_160_uefi_unlock_undervolting_and_remove/)，对CFG Lock进行解锁再使用该OpenCore！**
 - 目前仅为完善macOS，可能会导致Windows出现不稳定情况。
-- 与kext相关的内容添加会同时同步到其他Opencore版本的config文件中，但**不保证可用性**，请自行测试，如有问题可以提交ISSUE或PR。**建议使用仓库最新版**
+- 与kext相关的内容添加会同时同步到其他Opencore版本的config文件中，但**不保证可用性**，请自行测试。**建议使用仓库最新版**
 - 使用前请先**更新序列号**，以免被苹果拉黑账号。
 - 请各基于本仓库的定制版，注明来源并更新机器序列号再进行使用，谢谢！
 
@@ -77,6 +77,10 @@ CPU | Intel Core i7 9750H
 - 全部驱动为最新
 
 ### 引导更新日志
+- 2021.3.14
+  - 更新README
+  - 修复alc-verb无法使用情况
+  - 修复声卡在电池状态下耳机爆音问题
 - 2021.3.14
   - 更新README
   - 更新到Opencore 0.6.7
@@ -154,7 +158,7 @@ CPU | Intel Core i7 9750H
 
 ### 进入系统后优化
 - 对于睡眠部分，请参考睡眠设置
-- 对于电池供电下唤醒导致耳机爆音/无声等问题，请参考声卡问题处理 **目前脚本暂时没时间更新，近期会进行更新**
+- 对于电池供电下唤醒导致耳机爆音/无声等问题，请参考声卡问题处理 
 - 对于升级11.1后sech进程一直占用CPU，请打开iCloud密钥串同步开关，即可解决
 
 ### 睡眠处理
@@ -176,7 +180,6 @@ sudo pmset -a tcpkeepalive 0 # 如果仍然睡不着可以尝试一下睡眠期�
 3. 除了“当显示器关闭时，防止电脑自动进入睡眠”是可选的外，请关闭设置-节能器里的所有其他选项。
 
 ### 声卡问题处理
-> 以下方法待修复
 
 板载声卡如果在电池供电状态下使用耳机，并从睡眠中唤醒会出现无声/爆音问题
 
@@ -188,21 +191,23 @@ sudo pmset -a tcpkeepalive 0 # 如果仍然睡不着可以尝试一下睡眠期�
 
 有两种解决方式
   - 使用[ALCPlugFix](https://github.com/gorquan/ALCPlugFix),出现问题后**插拔耳机**
-  - 执行以下命令：`hda-verb 0x18 SET_PIN_WIDGET_CONTROL 0x24`，需要参考**hda-verb安装**步骤
+  - 执行以下命令：`alc-verb 0x18 SET_PIN_WIDGET_CONTROL 0x24`，需要参考**alc-verb安装**步骤
 
-* hda-verb安装
+* alc-verb安装
 
-`hda-verb`放置于`software`文件夹下，下载后请将其**放置**在`/usr/local/bin`目录下面
+`alc-verb`可以从AppleALC中获取，下载后请将其**放置**在`/usr/local/bin`目录下面
 
 * 注意
   
-如果采用两者，则**不要**再将`hda-verb`安装在`/usr/local/bin`目录下面，因为`ALCPlugFix`已经安装`hda-verb`到系统。
+如果采用两者，则**不要**再将`alc-verb`安装在`/usr/local/bin`目录下面，因为`ALCPlugFix`已经安装`alc-verb`到`/usr/local/bin`下。
+
+### 其他相关说明
+- Intel Wi-Fi Adapter Kernel Extension for macOS [itlwm](https://github.com/OpenIntelWireless/itlwm)
 
 ### 尚未测试
 - 雷电是否工作
 
 ### 下一步计划
-- 声卡hda-verb无法使用处理
 - 亮度控制加载缓慢排查
 - 配置调优，使其更适合运行MacOS
 - 调整USB
