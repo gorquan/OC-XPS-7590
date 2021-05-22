@@ -3,11 +3,11 @@ XPS 7590 with OpenCore
 
 ### 引导版本
 
-OpenCore: 0.5.8 0.5.9 0.6.0 0.6.1 0.6.2 0.6.3 0.6.4 0.6.5 **0.6.7**
+OpenCore: 0.5.8 0.5.9 0.6.0 0.6.1 0.6.2 0.6.3 0.6.4 0.6.5 0.6.7 **0.6.8**
 
 MacOS: 
 - macOS Catalina 10.15.3(19D76) - 10.15.7(19H2)
-- macOS Big Sur 11.0 11.1 **11.2(20D91)**
+- macOS Big Sur 11.0 11.1 11.2 **11.3.1(20E241)**
 
 ### 配置信息
 Key | Value
@@ -62,6 +62,8 @@ CPU | Intel Core i7 9750H
   - 盒盖睡眠正常工作
 - 读卡器：
   - 正常工作
+- USB
+  - 支持安卓手机USB网络共享功能
   
 ### 存在问题的设备
 - 独显
@@ -70,13 +72,19 @@ CPU | Intel Core i7 9750H
   - 无法使用只读模式（内存卡加锁）
 
 ### 结构目录
-- 最新版会提供完整的EFI，目前仓库最新版：**0.6.7**
+- 最新版会提供完整的EFI，目前仓库最新版：**0.6.8**
 - 为了方便维护，已经将ACPI、Kext和Drivers目录独立出来，如果需要旧版本的Opencore，请自行组合EFI文件夹内容，**建议使用仓库最新版Opencore**
 
 ### 驱动情况
 - 全部驱动为最新
 
 ### 引导更新日志
+- 2021.5.10
+  - 添加HoRNDIS.kext，支持安卓USB共享网络功能
+- 2021.5.1
+  - 更新README
+  - 更新到Opencore 0.6.8
+  - 所有Kext更新到最新版本
 - 2021.3.14
   - 更新README
   - 修复alc-verb无法使用情况
@@ -215,6 +223,7 @@ sudo pmset -a tcpkeepalive 0 # 如果仍然睡不着可以尝试一下睡眠期�
 
 ### 感谢
 - Apple
+- 各位Kext开发者
 - [@Acidanthera](https://github.com/acidanthera)
 - [@daliansky](https://github.com/daliansky)
 - [@geek5nan](https://github.com/geek5nan/Hackintosh-XPS7590)
