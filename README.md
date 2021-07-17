@@ -3,11 +3,11 @@ XPS 7590 with OpenCore
 
 ### 引导版本
 
-OpenCore: 0.5.8 0.5.9 0.6.0 0.6.1 0.6.2 0.6.3 0.6.4 0.6.5 0.6.7 0.6.8 **0.6.9**
+OpenCore: 0.5.8 0.5.9 0.6.0 0.6.1 0.6.2 0.6.3 0.6.4 0.6.5 0.6.7 0.6.8 0.6.9 **0.7.1**
 
 MacOS: 
 - macOS Catalina 10.15.3(19D76) - 10.15.7(19H2)
-- macOS Big Sur 11.0 11.1 11.2 **11.3.1(20E241)**
+- macOS Big Sur 11.0 11.1 11.2 11.3 **11.4(20F71)**
 
 ### 配置信息
 Key | Value
@@ -26,7 +26,7 @@ CPU | Intel Core i7 9750H
 - 目前仅为完善macOS，可能会导致Windows出现不稳定情况。
 - 与kext相关的内容添加会同时同步到其他Opencore版本的config文件中，但**不保证可用性**，请自行测试。**建议使用仓库最新版**
 - 使用前请先**更新序列号**，以免被苹果拉黑账号。
-- 请各基于本仓库的定制版，注明来源并更新机器序列号再进行使用，谢谢！
+- 请各基于本仓库的定制版，**注明来源并更新机器序列号**再进行使用，谢谢！
 
 ### 工作情况
 - CPU：
@@ -72,13 +72,18 @@ CPU | Intel Core i7 9750H
   - 无法使用只读模式（内存卡加锁）
 
 ### 结构目录
-- 最新版会提供完整的EFI，目前仓库最新版：**0.6.9**
+- 最新版会提供完整的EFI，目前仓库最新版：**0.7.1**
 - 为了方便维护，已经将ACPI、Kext和Drivers目录独立出来，如果需要旧版本的Opencore，请自行组合EFI文件夹内容，**建议使用仓库最新版Opencore**
 
 ### 驱动情况
 - 全部驱动为最新
 
 ### 引导更新日志
+- 2021.7.17
+  - 更新README
+  - 更新到Opencore 0.7.1
+  - 所有Kext更新到最新版本
+  - 修复亮度控制加载缓慢问题
 - 2021.5.22
   - 更新README
   - 更新到Opencore 0.6.9
@@ -167,6 +172,7 @@ CPU | Intel Core i7 9750H
 - OC 0.6.3支持从MacOS10.15.7平滑升级到MacOS11.0，无须重装。建议先将OC更新到最新版本再对MacOS进行升级，以免出现不可预估的问题。
 - 升级0.6.4请参考文章进行升级 [When upgrading to 0.6.4 we recommend](https://github.com/acidanthera/bugtracker/issues/1222#issuecomment-739241310)
 - 由于0.6.6是一个较大的改动[PSA: OpenCore 0.6.6 will require you to jump through a few more hoops](https://www.reddit.com/r/hackintosh/comments/lb2456/psa_opencore_066_will_require_you_to_jump_through/)，且存在未知问题放弃适配。低版本用户可以直接升级到0.6.7，建议按照该文章进行升级，以免出现不可预估的问题 [Updating Bootstrap in 0.6.6](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootstrap.html#updating-bootstrap-in-0-6-6)
+- 由于个人原因，没有适配0.7.0，可以直接升级到0.7.1
 
 ### 进入系统后优化
 - 对于睡眠部分，请参考睡眠设置
@@ -220,7 +226,6 @@ sudo pmset -a tcpkeepalive 0 # 如果仍然睡不着可以尝试一下睡眠期�
 - 雷电是否工作
 
 ### 下一步计划
-- 亮度控制加载缓慢排查
 - 配置调优，使其更适合运行MacOS
 - 调整USB
 - 定制电池
